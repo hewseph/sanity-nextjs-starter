@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.header-container {
+    height: 92px;
+    width: 100vw;
+    padding: 8px 56px;
+    box-sizing: border-box;
+    background-color: #FCFCFC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    padding: 15px 0;
+    width: 137px;
+    height: 76px;
+    box-sizing: border-box;
+}
+
+
+.hero-section {
+    display: flex;
+    background-image: url('https://web.storagely.io/wp-content/uploads/2023/12/B32A3067.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-blend-mode: overlay;
+    height: 674px;
+    padding: 30px;
+}
+
+.hero-heading {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 130%;
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.hero-subheading {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 130%;
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 1.8px;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+}

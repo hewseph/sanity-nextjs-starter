@@ -1,11 +1,17 @@
 import Hero from "@/types/Hero";
+import styled from 'styled-components';
 
-export default function HeroSection({ heading, tagline }: Hero) {
+export default function HeroSection({ heading, tagline, backgroundImage }: Hero) {
   return (
-    <section className="bg-gray-200">
-      <div className="mx-auto max-w-4xl px-10 py-16">
-        <h1 className="mb-6 text-6xl">{heading}</h1>
-        <p className="text-lg font-light">{tagline}</p>
+    <section
+      className="flex items-center justify-center bg-gray-200 hero-section"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
+    >
+      <div className="mx-auto px-10 py-16 text-center">
+        <h2 className="hero-subheading">{tagline}</h2>
+        <h1 className="hero-heading">{heading}</h1>
       </div>
     </section>
   );

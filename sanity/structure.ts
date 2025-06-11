@@ -1,5 +1,5 @@
 import { DefaultDocumentNodeResolver } from "sanity/desk";
-import Iframe from "sanity-plugin-iframe-pane";
+import { Iframe } from "sanity-plugin-iframe-pane";
 import SanityDocumentWithSlug from "@/types/SanityDocumentWithSlug";
 import { baseUrl } from "./env";
 
@@ -7,6 +7,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
   S,
   { schemaType }
 ) => {
+  console.log(schemaType)
   switch (schemaType) {
     // For page documents, display this custom configuration in Sanity Studio (Preview pane with iFrame of draft content)
     case `page`:

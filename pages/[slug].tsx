@@ -14,9 +14,10 @@ interface pageProps {
   queryParams?: { slug: string };
 }
 
-const Page = ({ components, preview, queryParams }: pageProps) => {
+const Page = ({ components, preview, queryParams, headerData }: pageProps) => {
   return (
     <PageComponent
+      headerData={headerData}
       components={components}
       preview={preview}
       query={query}
@@ -38,9 +39,16 @@ export const getStaticProps: GetStaticProps = async ({
   }
 
   const pageData = await client.fetch(query, queryParams);
+  const headerQuery = groq`*[_type == "header"][0]`;
+
+  const headerData = await client.fetch(headerQuery);
+
+  console.log({ headerData })
+
 
   return {
     props: {
+      headerData,
       components: pageData[0]?.components || [],
       preview,
       queryParams: null,

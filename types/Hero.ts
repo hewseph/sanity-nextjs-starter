@@ -3,6 +3,7 @@ type Hero = {
   _type: "hero";
   heading: string;
   tagline: string;
+  backgroundImage: string
 };
 
 export default Hero;

@@ -16,7 +16,7 @@ type PageComponentsProps = {
   components: Component[];
 };
 
-export default function PageComponents({ components }: PageComponentsProps) {
+export default async function PageComponents({ components }: PageComponentsProps) {
   if (!components?.length) return <NoComponentsMessage />;
 
   return (
@@ -32,3 +32,4 @@ export default function PageComponents({ components }: PageComponentsProps) {
     </main>
   );
 }
+

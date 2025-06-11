@@ -13,6 +13,12 @@ const hero = {
       title: "Tagline",
       type: "string",
     },
+    {
+      name: "backgroundImage",
+      title: "Background Image",
+      type: "string",
+    },
+
   ],
 };
 
