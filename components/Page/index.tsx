@@ -15,14 +15,13 @@ type PageProps = {
 };
 
 const Page = ({ preview, components, query, queryParams, headerData }: PageProps) => {
-  console.log({ preview, components, query, queryParams, headerData })
   return preview ? (
     <PreviewSuspense fallback="Loading...">
       <PagePreview query={query} queryParams={queryParams} />
     </PreviewSuspense>
   ) : (
     <>
-      <div className="header-container">
+      {/* <div className="header-container">
         <Link href="/landing">
           <img
             className="logo"
@@ -41,7 +40,7 @@ const Page = ({ preview, components, query, queryParams, headerData }: PageProps
             <a style={{ color: "#6b6b6b" }} href={link.url}>{link.buttonText}</a>
           ))}
         </div>
-      </div>
+      </div> */}
       <PageComponents components={components} />
     </>
   );

@@ -4,25 +4,53 @@ import PageComponent from "@/components/Page";
 import Component from "@/types/Component";
 
 import { client } from "@/sanity/lib/sanity.client";
+import Link from "next/link";
 
 // We use a query parameter 'slug' which we then pass in as a second argument when fetching
 const query = groq`*[_type == "page" && slug.current == $slug]{"components": pageBuilder[]}`;
 
-interface pageProps {
+type PageProps = {
   preview: boolean;
   components: Component[];
+  headerData: { links: { buttonText: string, url: string }[]; title: string }
+  query: string;
   queryParams?: { slug: string };
-}
+};
 
-const Page = ({ components, preview, queryParams, headerData }: pageProps) => {
+const Page = ({ components, preview, queryParams, headerData }: PageProps) => {
+  console.log("here===========")
+
+  console.log({ headerData, links: headerData?.links })
   return (
-    <PageComponent
-      headerData={headerData}
-      components={components}
-      preview={preview}
-      query={query}
-      queryParams={queryParams}
-    />
+    <>
+      <div className="header-container">
+        <Link href="/landing">
+          <img
+            className="logo"
+            src="https://static.storagely.link/public/uploads/logo1291699888124.webp"
+            alt="logo"
+            data-pagespeed-no-defer=""
+          />
+        </Link>
+
+        <div style={{
+          display: "flex",
+          gap: "32px",
+          padding: "8px 0",
+        }}>
+          {headerData?.links?.map(link => (
+            <a style={{ color: "#6b6b6b" }} href={link.url}>{link.buttonText}</a>
+          ))}
+        </div>
+      </div>
+      <PageComponent
+        headerData={headerData}
+        components={components}
+        preview={preview}
+        query={query}
+        queryParams={queryParams}
+      />
+    </>
   );
 };
 
@@ -39,12 +67,11 @@ export const getStaticProps: GetStaticProps = async ({
   }
 
   const pageData = await client.fetch(query, queryParams);
-  const headerQuery = groq`*[_type == "header"][0]`;
+  const headerQuery = groq`*[_type == "header"]`;
 
-  const headerData = await client.fetch(headerQuery);
+  const headerDataArr = await client.fetch(headerQuery);
 
-  console.log({ headerData })
-
+  const headerData = headerDataArr?.length ? headerDataArr[0] : {}
 
   return {
     props: {

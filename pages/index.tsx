@@ -10,11 +10,12 @@ type HomepageProps = {
   preview: boolean;
   components: Component[];
   queryParams?: { slug: string };
-};
+} & any;
 
-const Homepage = ({ preview, components, queryParams }: HomepageProps) => {
+const Homepage = ({ preview, components, queryParams, headerData }: HomepageProps) => {
   return (
     <Page
+      headerData={headerData}
       preview={preview}
       components={components}
       query={query}
